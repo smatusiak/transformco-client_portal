@@ -59,25 +59,20 @@ exports.postContact = async (req, res) => {
     }
 
     let transportConfig;
-    if (process.env.SENDGRID_API_KEY) {
-      transportConfig = nodemailerSendgrid({
-        apiKey: process.env.SENDGRID_API_KEY
-      });
-    } else {
-      transportConfig = {
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASSWORD
-        }
-      };
-    }
+    transportConfig = {
+      host: 'smtp.mailgun.org',
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD
+      }
+    };
 
     let transporter = nodemailer.createTransport(transportConfig);
 
     const mailOptions = {
       to: process.env.SITE_CONTACT_EMAIL,
       from: `${fromName} <${fromEmail}>`,
-      subject: 'Contact Form | Hackathon Starter',
+      subject: 'Contact Form | TransformCo Client',
       text: req.body.message
     };
 

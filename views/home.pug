@@ -1,7 +1,4 @@
-extends layout
-
-block content
-  h1 TransformCo.AI
-  p.lead Progress made easy.
-  hr
-  include account/loginhp
+if !user
+  include account/login
+else
+  include account/profile

@@ -15,18 +15,14 @@ const randomBytesAsync = promisify(crypto.randomBytes);
  */
 const sendMail = (settings) => {
   let transportConfig;
-  if (process.env.SENDGRID_API_KEY) {
-    transportConfig = nodemailerSendgrid({
-      apiKey: process.env.SENDGRID_API_KEY
-    });
-  } else {
-    transportConfig = {
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASSWORD
-      }
-    };
-  }
+  transportConfig = {
+    host: 'smtp.mailgun.org',
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASSWORD
+    }
+  };
+  
   let transporter = nodemailer.createTransport(transportConfig);
 
   return transporter.sendMail(settings.mailOptions)
@@ -377,9 +373,9 @@ exports.getVerifyEmail = (req, res, next) => {
   const sendVerifyEmail = (token) => {
     const mailOptions = {
       to: req.user.email,
-      from: 'hackathon@starter.com',
-      subject: 'Please verify your email address on Hackathon Starter',
-      text: `Thank you for registering with hackathon-starter.\n\n
+      from: 'support@mail.transformco.ai',
+      subject: 'Please verify your email address on TransformCo',
+      text: `Thank you for registering with TransformCo.\n\n
         This verify your email address please click on the following link, or paste this into your browser:\n\n
         http://${req.headers.host}/account/verify/${token}\n\n
         \n\n
@@ -443,8 +439,8 @@ exports.postReset = (req, res, next) => {
     if (!user) { return; }
     const mailOptions = {
       to: user.email,
-      from: 'hackathon@starter.com',
-      subject: 'Your Hackathon Starter password has been changed',
+      from: 'support@mail.transformco.ai',
+      subject: 'Your TransformCo password has been changed',
       text: `Hello,\n\nThis is a confirmation that the password for your account ${user.email} has just been changed.\n`
     };
     const mailSettings = {
@@ -514,8 +510,8 @@ exports.postForgot = (req, res, next) => {
     const token = user.passwordResetToken;
     const mailOptions = {
       to: user.email,
-      from: 'hackathon@starter.com',
-      subject: 'Reset your password on Hackathon Starter',
+      from: 'support@mail.transformco.ai',
+      subject: 'Reset your password on TransformCo',
       text: `You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n
         Please click on the following link, or paste this into your browser to complete the process:\n\n
         http://${req.headers.host}/reset/${token}\n\n
