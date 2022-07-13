@@ -1,17 +1,17 @@
 const passport = require('passport');
 const refresh = require('passport-oauth2-refresh');
 const axios = require('axios');
-const { Strategy: InstagramStrategy } = require('passport-instagram');
+//const { Strategy: InstagramStrategy } = require('passport-instagram');
 const { Strategy: LocalStrategy } = require('passport-local');
-const { Strategy: FacebookStrategy } = require('passport-facebook');
-const { Strategy: SnapchatStrategy } = require('passport-snapchat');
-const { Strategy: TwitterStrategy } = require('passport-twitter');
-const { Strategy: TwitchStrategy } = require('passport-twitch-new');
+//const { Strategy: FacebookStrategy } = require('passport-facebook');
+//const { Strategy: SnapchatStrategy } = require('passport-snapchat');
+//const { Strategy: TwitterStrategy } = require('passport-twitter');
+//const { Strategy: TwitchStrategy } = require('passport-twitch-new');
 const { Strategy: GitHubStrategy } = require('passport-github2');
 const { OAuth2Strategy: GoogleStrategy } = require('passport-google-oauth');
 const { Strategy: LinkedInStrategy } = require('passport-linkedin-oauth2');
-const { Strategy: OpenIDStrategy } = require('passport-openid');
-const { OAuthStrategy } = require('passport-oauth');
+//const { Strategy: OpenIDStrategy } = require('passport-openid');
+//const { OAuthStrategy } = require('passport-oauth');
 const { OAuth2Strategy } = require('passport-oauth');
 const _ = require('lodash');
 const moment = require('moment');
@@ -68,6 +68,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' }, (email, password, don
 /**
  * Sign in with Snapchat.
  */
+/*
 passport.use(new SnapchatStrategy({
   clientID: process.env.SNAPCHAT_ID,
   clientSecret: process.env.SNAPCHAT_SECRET,
@@ -117,10 +118,12 @@ passport.use(new SnapchatStrategy({
     });
   }
 }));
+*/
 
 /**
  * Sign in with Facebook.
  */
+/*
 passport.use(new FacebookStrategy({
   clientID: process.env.FACEBOOK_ID,
   clientSecret: process.env.FACEBOOK_SECRET,
@@ -177,7 +180,7 @@ passport.use(new FacebookStrategy({
     });
   }
 }));
-
+*/
 /**
  * Sign in with GitHub.
  */
@@ -264,6 +267,7 @@ passport.use(new GitHubStrategy({
 /**
  * Sign in with Twitter.
  */
+/*
 passport.use(new TwitterStrategy({
   consumerKey: process.env.TWITTER_KEY,
   consumerSecret: process.env.TWITTER_SECRET,
@@ -314,7 +318,7 @@ passport.use(new TwitterStrategy({
     });
   }
 }));
-
+*/
 /**
  * Sign in with Google.
  */
@@ -446,6 +450,7 @@ passport.use(new LinkedInStrategy({
 /**
  * Sign in with Instagram.
  */
+/*
 passport.use(new InstagramStrategy({
   clientID: process.env.INSTAGRAM_ID,
   clientSecret: process.env.INSTAGRAM_SECRET,
@@ -495,10 +500,11 @@ passport.use(new InstagramStrategy({
     });
   }
 }));
-
+*/
 /**
  * Twitch API OAuth.
  */
+/*
 const twitchStrategyConfig = new TwitchStrategy({
   clientID: process.env.TWITCH_CLIENT_ID,
   clientSecret: process.env.TWITCH_CLIENT_SECRET,
@@ -566,10 +572,11 @@ const twitchStrategyConfig = new TwitchStrategy({
 });
 passport.use('twitch', twitchStrategyConfig);
 refresh.use('twitch', twitchStrategyConfig);
-
+*/
 /**
  * Tumblr API OAuth.
  */
+/*
 passport.use('tumblr', new OAuthStrategy({
   requestTokenURL: 'https://www.tumblr.com/oauth/request_token',
   accessTokenURL: 'https://www.tumblr.com/oauth/access_token',
@@ -592,6 +599,7 @@ passport.use('tumblr', new OAuthStrategy({
 /**
  * Foursquare API OAuth.
  */
+/*
 passport.use('foursquare', new OAuth2Strategy({
   authorizationURL: 'https://foursquare.com/oauth2/authorize',
   tokenURL: 'https://foursquare.com/oauth2/access_token',
@@ -609,10 +617,11 @@ passport.use('foursquare', new OAuth2Strategy({
     });
   });
 }));
-
+*/
 /**
  * Steam API OpenID.
  */
+/*
 passport.use(new OpenIDStrategy({
   apiKey: process.env.STEAM_KEY,
   providerURL: 'http://steamcommunity.com/openid',
@@ -669,10 +678,11 @@ passport.use(new OpenIDStrategy({
       });
   }
 }));
-
+*/
 /**
  * Pinterest API OAuth.
  */
+
 passport.use('pinterest', new OAuth2Strategy({
   authorizationURL: 'https://api.pinterest.com/oauth/',
   tokenURL: 'https://api.pinterest.com/v1/oauth/token',
@@ -694,6 +704,7 @@ passport.use('pinterest', new OAuth2Strategy({
 /**
  * Intuit/QuickBooks API OAuth.
  */
+/*
 const quickbooksStrategyConfig = new OAuth2Strategy({
   authorizationURL: 'https://appcenter.intuit.com/connect/oauth2',
   tokenURL: 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer',
@@ -734,7 +745,7 @@ const quickbooksStrategyConfig = new OAuth2Strategy({
 });
 passport.use('quickbooks', quickbooksStrategyConfig);
 refresh.use('quickbooks', quickbooksStrategyConfig);
-
+*/
 /**
  * Login Required middleware.
  */
