@@ -1,15 +1,15 @@
 {
-  "name": "hackathon-starter",
+  "name": "transformco-client_portal",
   "version": "7.0.0",
   "description": "A boilerplate for Node.js web applications",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/smatusiak/transformco-client_portal.git"
   },
   "license": "MIT",
-  "author": "Sahat Yalkabov",
+  "author": "Stephen Matusiak",
   "contributors": [
-    "Yashar Fakhari (https://github.com/YasharF)"
+    "Stephen Matusiak (https://github.com/smatusiak)"
   ],
   "scripts": {
     "postinstall": "npm rebuild node-sass",
@@ -44,6 +44,7 @@
     "lodash": "^4.17.21",
     "lusca": "^1.7.0",
     "mailchecker": "^4.1.14",
+    "mailgun-js": "^0.22.0",
     "moment": "^2.29.1",
     "mongoose": "^6.2.8",
     "morgan": "^1.10.0",

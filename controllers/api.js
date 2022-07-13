@@ -124,7 +124,7 @@ exports.getScraping = (req, res, next) => {
 exports.getGithub = async (req, res, next) => {
   const github = new Octokit();
   try {
-    const { data: repo } = await github.repos.get({ owner: 'sahat', repo: 'hackathon-starter' });
+    const { data: repo } = await github.repos.get({ owner: 'smatusiak', repo: 'transformco-client_portal' });
     res.render('api/github', {
       title: 'GitHub API',
       repo
@@ -557,7 +557,7 @@ exports.getPayPal = (req, res, next) => {
       cancel_url: process.env.PAYPAL_CANCEL_URL
     },
     transactions: [{
-      description: 'Hackathon Starter',
+      description: 'TransformCo Client Portal',
       amount: {
         currency: 'USD',
         total: '1.99'
@@ -621,13 +621,13 @@ exports.getLob = async (req, res, next) => {
     address_zip: '94107'
   };
   const addressFrom = {
-    name: 'Hackathon Starter',
+    name: 'TransformCo',
     address_line1: '123 Test Street',
     address_line2: 'Unit 200',
-    address_city: 'Chicago',
-    address_state: 'IL',
-    address_zip: '60012',
-    address_country: 'US'
+    address_city: 'Guelph',
+    address_state: 'ON',
+    address_zip: 'N1E2A4',
+    address_country: 'CA'
   };
 
   const lookupZip = () => lob.usZipLookups.lookup({ zip_code: '94107' })
