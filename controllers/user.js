@@ -373,7 +373,7 @@ exports.getVerifyEmail = (req, res, next) => {
   const sendVerifyEmail = (token) => {
     const mailOptions = {
       to: req.user.email,
-      from: 'support@mail.transformco.ai',
+      from: 'TransformCo <support@mail.transformco.ai>',
       subject: 'Please verify your email address on TransformCo',
       text: `Thank you for registering with TransformCo.\n\n
         This verify your email address please click on the following link, or paste this into your browser:\n\n
@@ -439,7 +439,7 @@ exports.postReset = (req, res, next) => {
     if (!user) { return; }
     const mailOptions = {
       to: user.email,
-      from: 'support@mail.transformco.ai',
+      from: 'TransformCo <support@mail.transformco.ai>',
       subject: 'Your TransformCo password has been changed',
       text: `Hello,\n\nThis is a confirmation that the password for your account ${user.email} has just been changed.\n`
     };
@@ -510,7 +510,7 @@ exports.postForgot = (req, res, next) => {
     const token = user.passwordResetToken;
     const mailOptions = {
       to: user.email,
-      from: 'support@mail.transformco.ai',
+      from: 'TransformCo <support@mail.transformco.ai>',
       subject: 'Reset your password on TransformCo',
       text: `You are receiving this email because you (or someone else) have requested the reset of the password for your account.\n\n
         Please click on the following link, or paste this into your browser to complete the process:\n\n
