@@ -10,24 +10,23 @@ const userSchema = new mongoose.Schema({
   emailVerificationToken: String,
   emailVerified: Boolean,
 
-  snapchat: String,
-  facebook: String,
-  twitter: String,
   google: String,
   github: String,
-  instagram: String,
   linkedin: String,
-  steam: String,
-  twitch: String,
-  quickbooks: String,
   tokens: Array,
 
+  uuid: String,
+  
   profile: {
-    name: String,
+    firstName: String,
+    lastName: String,
     gender: String,
     location: String,
     website: String,
-    picture: String
+    picture: String,
+    jobs: String,
+    problem: String,
+    goal: String
   }
 }, { timestamps: true });
 

@@ -129,10 +129,11 @@ exports.postSignup = (req, res, next) => {
     return res.redirect('/signup');
   }
   req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false });
-
+  const uuid = crypto.randomBytes(16).toString("hex");
   const user = new User({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
+    uuid: uuid
   });
 
   User.findOne({ email: req.body.email }, (err, existingUser) => {
@@ -181,10 +182,12 @@ exports.postUpdateProfile = (req, res, next) => {
     if (err) { return next(err); }
     if (user.email !== req.body.email) user.emailVerified = false;
     user.email = req.body.email || '';
-    user.profile.name = req.body.name || '';
+    user.profile.firstName = req.body.firstName || '';
+    user.profile.lastName = req.body.lastName || '';
     user.profile.gender = req.body.gender || '';
     user.profile.location = req.body.location || '';
     user.profile.website = req.body.website || '';
+    user.profile.jobs = req.body.jobs || '';
     user.save((err) => {
       if (err) {
         if (err.code === 11000) {
